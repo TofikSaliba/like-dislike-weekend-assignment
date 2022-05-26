@@ -13,6 +13,7 @@ class App extends React.Component {
     yes: 0,
     no: 0,
     msg: "Are You Ready?",
+    clicked: false,
   };
 
   onSelectChange = (newCat) => {
@@ -28,7 +29,11 @@ class App extends React.Component {
   handleClick = (classId) => {
     if (this.state.imgIndex < 5 && this.state.pickedCat) {
       this.setState((prev) => {
-        return { imgIndex: prev.imgIndex + 1, [classId]: prev[classId] + 1 };
+        return {
+          imgIndex: prev.imgIndex + 1,
+          [classId]: prev[classId] + 1,
+          clicked: true,
+        };
       });
     } else if (this.state.imgIndex === 5 && !this.state.msg) {
       let msg2 =
@@ -39,6 +44,9 @@ class App extends React.Component {
         return { msg: msg2, [classId]: prev[classId] + 1 };
       });
     }
+    setTimeout(() => {
+      this.setState({ clicked: false });
+    }, 1000);
   };
 
   render() {
@@ -73,11 +81,13 @@ class App extends React.Component {
             text="❌"
             className="no"
             handleClick={this.handleClick}
+            disabled={this.state.clicked}
           />
           <CustomButton
             text="✔"
             className="yes"
             handleClick={this.handleClick}
+            disabled={this.state.clicked}
           />
         </div>
       </div>
