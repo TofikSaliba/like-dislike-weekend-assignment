@@ -28,35 +28,38 @@ class App extends React.Component {
 
   handleClick = (classId) => {
     if (this.state.imgIndex < 5 && this.state.pickedCat) {
-      this.setState((prev) => {
-        return {
-          imgIndex: prev.imgIndex + 1,
-          [classId]: prev[classId] + 1,
-          clicked: true,
-        };
-      });
+      this.setSateFlipImage(classId);
     } else if (this.state.imgIndex === 5 && !this.state.msg) {
-      let msg2 =
-        this.state.yes > this.state.no
-          ? `Cool! You love ${this.state.pickedCat}, i like that :))`
-          : `Too bad! I guess you dont like ${this.state.pickedCat}...`;
-      this.setState((prev) => {
-        return { msg: msg2, [classId]: prev[classId] + 1 };
-      });
+      this.setStateEndMsg(classId);
     }
     setTimeout(() => {
       this.setState({ clicked: false });
     }, 1000);
   };
 
+  setSateFlipImage = (classId) => {
+    this.setState((prev) => {
+      return {
+        imgIndex: prev.imgIndex + 1,
+        [classId]: prev[classId] + 1,
+        clicked: true,
+      };
+    });
+  };
+
+  setStateEndMsg = (classId) => {
+    let msg2 =
+      this.state.yes > this.state.no
+        ? `Cool! You love ${this.state.pickedCat}, i like that :))`
+        : `Too bad! I guess you dont like ${this.state.pickedCat}...`;
+    this.setState((prev) => {
+      return { msg: msg2, [classId]: prev[classId] + 1 };
+    });
+  };
+
   render() {
     return (
       <div className="mainContainer">
-        {/* <Select
-          default="Select category"
-          onSelectChange={this.onSelectChange}
-          optionsArr={this.state.categories}
-        /> */}
         <div className="counters">
           <span>🤢{this.state.no}</span>
           <span>💖{this.state.yes}</span>
