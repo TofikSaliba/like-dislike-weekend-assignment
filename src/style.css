@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  background: silver;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  width: 8rem;
+  cursor: pointer;
+  font-size: clamp(1.5rem, 2vw, 3rem);
+}
+
+.selectContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.selectContainer select {
+  border-radius: 5px;
+  font-size: clamp(1.2rem, 3vw, 3rem);
+  padding: 0.5rem 1rem;
+}
+
+.mainContainer {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 90vh;
+  gap: 2rem;
+}
+
+.imgContainer,
+.finalMsg {
+  display: flex;
+  justify-content: center;
+}
+
+.mainContainer .finalMsg {
+  flex-direction: column;
+  gap: 4rem;
+  width: 50%;
+  height: 60%;
+  align-items: center;
+  background-color: darkcyan;
+  border-radius: 4rem;
+  padding: 1rem;
+  font-size: clamp(1.5rem, 4vw, 5rem);
+}
+
+.mainImg {
+  width: 50%;
+  border-radius: 4rem;
+}
+
+.yesNoBtns,
+.counters {
+  display: flex;
+  justify-content: space-between;
+  width: 45%;
+  gap: 1rem;
+  font-size: clamp(2rem, 3vw, 4rem);
+}
+
+.finalMsg,
+.startScreen {
+  font-size: 4rem;
+}
+
+@media (max-width: 850px) {
+  .mainContainer {
+    height: 50vh;
+    gap: 2rem;
+  }
+
+  .mainImg {
+    width: 60%;
+  }
+}
