@@ -48,13 +48,18 @@ class App extends React.Component {
   };
 
   setStateEndMsg = (classId) => {
-    let msg2 =
-      this.state.yes > this.state.no
-        ? `Cool! You love ${this.state.pickedCat}, i like that :))`
-        : `Too bad! I guess you dont like ${this.state.pickedCat}...`;
-    this.setState((prev) => {
-      return { msg: msg2, [classId]: prev[classId] + 1 };
-    });
+    this.setState(
+      (prev) => {
+        return { [classId]: prev[classId] + 1 };
+      },
+      () => {
+        let msg2 =
+          this.state.yes > this.state.no
+            ? `Cool! You love ${this.state.pickedCat}, i like that :))`
+            : `Too bad! I guess you dont like ${this.state.pickedCat}...`;
+        this.setState({ msg: msg2 });
+      }
+    );
   };
 
   render() {
